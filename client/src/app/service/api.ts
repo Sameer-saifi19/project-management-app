@@ -4,11 +4,7 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://dummyjson.com" }),
   reducerPath: "api",
   tagTypes: [],
-  endpoints: (builder) => ({
-    getAllProducts: builder.query({
-      query: () => "/products",
-    }),
-  }),
+  endpoints: (builder) => ({}),
 });
 
-export const {useGetAllProductsQuery} = api;
+export const {} = api;
