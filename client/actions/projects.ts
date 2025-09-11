@@ -40,6 +40,10 @@ export const createProject = async ({
       },
     });
 
+    if(!newProject){
+      return {status: 404, message: "Could not create project"}
+    }
+
     return { status: 201, data: newProject }; 
   } catch (error) {
     return { status: 500, message: "Internal server error", error };
