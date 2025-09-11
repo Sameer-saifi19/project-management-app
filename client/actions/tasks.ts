@@ -33,9 +33,9 @@ type createDataType = {
   priority?: string;
   tags?: string;
   startDate?: Date;
-  endDate?: Date;
+  dueDate?: Date;
   points?: number;
-  pojectId: string;
+  projectId: string;
   authorUserId: string;
   assignedUserId: string;
 };
@@ -47,9 +47,9 @@ export const createTask = async ({
   priority,
   tags,
   startDate,
-  endDate,
+  dueDate,
   points,
-  pojectId,
+  projectId,
   authorUserId,
   assignedUserId,
 }: createDataType) => {
@@ -62,9 +62,9 @@ export const createTask = async ({
         priority,
         tags,
         startDate,
-        endDate,
+        dueDate,
         points,
-        pojectId,
+        projectId,
         authorUserId,
         assignedUserId,
       },
@@ -80,4 +80,19 @@ export const createTask = async ({
   }
 };
 
+export const updateTaskStatus = async (taskId: string, status: string) => {
+  if (!taskId) {
+    return { status: 400, message: "Missing taskId or status" };
+  }
 
+  try {
+    const updatedTask = await prisma.task.update({
+      where: { id: taskId },
+      data: { status },
+    });
+
+    return { status: 200, data: updatedTask };
+  } catch (error: any) {
+    return { status: 500, message: `Error updating task: ${error.message}` };
+  }
+};
