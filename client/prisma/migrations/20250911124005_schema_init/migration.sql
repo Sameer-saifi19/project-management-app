@@ -27,7 +27,7 @@ CREATE TABLE "public"."Project" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT,
-    "StartDate" TIMESTAMP(3),
+    "startDate" TIMESTAMP(3),
     "endDate" TIMESTAMP(3),
 
     CONSTRAINT "Project_pkey" PRIMARY KEY ("id")
