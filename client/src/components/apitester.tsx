@@ -1,21 +1,18 @@
-import { getTasks } from "../../actions/tasks";
+"use client";
 
+import { useGetProjectsQuery } from "@/app/service/api";
 
-type ApiTestProps = {
-  projectId?: string;
-};
+export default function ProjectList() {
+  const { data: projects, isLoading, error } = useGetProjectsQuery({});
 
-export default async function ApiTest({ projectId }: ApiTestProps) {
-  if (!projectId) {
-    return <p>No projectId provided</p>;
-  }
-
-  const result = await getTasks(projectId);
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading projects</p>;
 
   return (
-    <div>
-      <h2>API Tester</h2>
-      <pre>{JSON.stringify(result, null, 2)}</pre>
-    </div>
+    <ul>
+      {projects?.map((p: any) => (
+        <li key={p.id}>{p.name}</li>
+      ))}
+    </ul>
   );
 }

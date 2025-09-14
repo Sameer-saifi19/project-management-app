@@ -1,13 +1,12 @@
-import ApiTest from "@/components/apitester";
+import ProjectList from '@/components/apitester'
+import React from 'react'
 
-export default async function Dashboard({ searchParams }: { searchParams: { projectId?: string } }) {
-    const params = await searchParams;
-  const projectId = params.projectId;
-
+const Dashboard = () => {
   return (
     <div>
-      <h1>Dashboard</h1>
-      <ApiTest projectId={projectId} />
+      <ProjectList/>
     </div>
-  );
+  )
 }
+
+export default Dashboard
