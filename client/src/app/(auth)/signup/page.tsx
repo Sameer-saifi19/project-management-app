@@ -38,7 +38,7 @@ export default function Signup() {
             } else {
                 setError(null)
                 setSuccess("User created Successfully")
-                router.push('/auth/signin')
+                router.push('/signin')
             }
         } catch (error: any) {
             console.error(error.message || "Something went wrong")
@@ -50,7 +50,7 @@ export default function Signup() {
         <div className={cn("flex flex-col gap-6")}>
             <Card>
                 <CardHeader>
-                    <CardTitle className="text-center">Create your MindPad account</CardTitle>
+                    <CardTitle className="text-center">Create your Taskly account</CardTitle>
                     <CardDescription className="text-center">
                         Welcome! Please fill in your details to get started
                     </CardDescription>
@@ -149,7 +149,7 @@ export default function Signup() {
                         </div>
                         <div className="mt-4 text-center text-sm">
                             Already have an account?{" "}
-                            <a href="/auth/signin" className="underline underline-offset-4">
+                            <a href="/signin" className="underline underline-offset-4">
                                 Sign in
                             </a>
                         </div>

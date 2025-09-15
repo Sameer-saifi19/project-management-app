@@ -1,11 +1,11 @@
+'use client'
+
 import {
   Home,
   ChartGantt,
   Settings,
   User2,
   ChevronUp,
-  Plus,
-  Projector,
   ChevronDown,
   SearchIcon,
   Users,
@@ -16,7 +16,6 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
@@ -24,9 +23,6 @@ import {
   SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarSeparator,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
@@ -42,6 +38,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { useSession } from "next-auth/react";
 
 const items = [
   {
@@ -77,6 +74,9 @@ const items = [
 ];
 
 const AppSidebar = () => {
+
+  const { data: session } = useSession()
+
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="py-4">
@@ -159,7 +159,7 @@ const AppSidebar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
-                  <User2 /> John Doe <ChevronUp className="ml-auto" />
+                  <User2 /> {session?.user?.name} <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">

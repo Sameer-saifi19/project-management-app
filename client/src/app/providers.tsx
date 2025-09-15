@@ -2,8 +2,7 @@
 
 import React from "react";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import { Provider } from "react-redux";
-import { store } from "@/lib/store";
+import { SessionProvider } from "next-auth/react";
 
 type Props = {
   children: React.ReactNode;
@@ -17,7 +16,7 @@ const Providers = ({ children }: Props) => {
       enableSystem
       disableTransitionOnChange
     >
-      <Provider store={store}>{children}</Provider>
+      <SessionProvider>{children}</SessionProvider>
     </ThemeProvider>
   );
 };

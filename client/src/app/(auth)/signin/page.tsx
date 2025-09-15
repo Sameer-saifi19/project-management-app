@@ -45,7 +45,7 @@ export default function Signin() {
     }
 
     if (result?.ok) {
-      router.push('/admin/dashboard')
+      router.push('/dashboard')
     }
   }
   return (
@@ -57,7 +57,7 @@ export default function Signin() {
             Welcome back ! Please sign in to Continue
           </CardDescription>
           <div className="grid mt-4">
-            <Button variant="outline" type="submit" onClick={() => signIn('google', { callbackUrl: "/admin/dashboard" })} className="w-full gap-3 flex">
+            <Button variant="outline" type="submit" onClick={() => signIn('google', { callbackUrl: "/dashboard" })} className="w-full gap-3 flex">
               Sign in with Google
             </Button>
           </div>
@@ -130,7 +130,7 @@ export default function Signin() {
             </div>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
-              <a href="/auth/signup" className="underline underline-offset-4">
+              <a href="/signup" className="underline underline-offset-4">
                 Sign up
               </a>
             </div>
