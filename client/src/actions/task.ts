@@ -1,13 +1,14 @@
+"use server"
+
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
-export const getTasks = async (projectId: string) => {
-  const session = await auth();
-  if (!session) return { status: 401, message: "401 unauthorized" };
+export const getTasks = async () => {
+  
   try {
     const getAllTask = await prisma.task.findMany({
       where: {
-        projectId: projectId,
+        projectId: "proj-1",
       },
       include: {
         author: true,
@@ -16,6 +17,8 @@ export const getTasks = async (projectId: string) => {
         attachments: true,
       },
     });
+
+    console.log(getAllTask)
 
     if (!getAllTask)
       return { status: 404, message: "cannot get tasks at this moment" };

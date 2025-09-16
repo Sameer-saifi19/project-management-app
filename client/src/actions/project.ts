@@ -1,11 +1,9 @@
+"use server"
+
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
-import { success } from "zod";
 
 export const getProjects = async () => {
-  const session = await auth();
-  if (!session) return { status: 401, message: "401 unauthorized" };
-
   try {
     const projects = await prisma.project.findMany();
 

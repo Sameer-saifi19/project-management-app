@@ -39,6 +39,8 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { useSession } from "next-auth/react";
+import { useQueryData } from "@/app/hooks/useQueryData";
+import { getProjects } from "@/actions/project";
 
 const items = [
   {
@@ -76,7 +78,6 @@ const items = [
 const AppSidebar = () => {
 
   const { data: session } = useSession()
-
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="py-4">
@@ -126,7 +127,11 @@ const AppSidebar = () => {
             </SidebarGroupLabel>
             <CollapsibleContent>
               <SidebarGroupContent>
-                <SidebarMenu></SidebarMenu>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    
+                  </SidebarMenuItem>
+                </SidebarMenu>
               </SidebarGroupContent>
             </CollapsibleContent>
           </SidebarGroup>
