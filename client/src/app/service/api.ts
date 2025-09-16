@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { getProjects } from "../../../actions/projects";
+import { getProjects } from "../../actions/projects";
 
 export interface Project {
   id: string;
